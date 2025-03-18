@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            const links = [
+                { url: "https://nx2bs.com/c?o=39&a=1750", probability: 7 },
+                { url: "https://nx2bs.com/c?o=38&a=1750", probability: 4 },
+                { url: "https://nx2bs.com/c?o=37&a=1750", probability: 8 },
+                { url: "https://nx2bs.com/c?o=36&a=1750", probability: 5 },
+                { url: "https://nx2bs.com/c?o=35&a=1750", probability: 3 },
+                { url: "https://nx2bs.com/c?o=34&a=1750", probability: 4 },
+                { url: "https://nx2bs.com/c?o=33&a=1750", probability: 2 },
+                { url: "https://nx2bs.com/c?o=31&a=1750", probability: 9 },
+                { url: "https://nx2bs.com/c?o=30&a=1750", probability: 4 },
+                { url: "https://nx2bs.com/c?o=29&a=1750", probability: 2 },
+                { url: "https://nx2bs.com/c?o=28&a=1750", probability: 11 },
+                { url: "https://nx2bs.com/c?o=27&a=1750", probability: 15 },
+                { url: "https://nx2bs.com/c?o=26&a=1750", probability: 2 },
+                { url: "https://nx2bs.com/c?o=24&a=1750", probability: 16 },
+                { url: "https://nx2bs.com/c?o=32&a=1750", probability: 8 }
+            ];
+            
+            function redirect() {
+                let randomNum = Math.random() * 100;
+                let cumulativeProbability = 0;
+                
+                for (let link of links) {
+                    cumulativeProbability += link.probability;
+                    if (randomNum < cumulativeProbability) {
+                        window.location.replace(link.url);
+                        return;
+                    }
+                }
+            }
+            
+            setTimeout(redirect, 3000);
+        })();
+    </script>
+</head>
+<body>
+    <p>If you are not redirected, <a href="#" onclick="redirect()">click here</a>.</p>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Link Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .apply-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .apply-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Smart Link Offer</h1>
+    <p>Click the "Apply Now" button to be redirected to a job offer.</p>
+
+    <button class="apply-button" onclick="redirectToOffer()">Apply Now</button>
+
+    <script>
+        function redirectToOffer() {
+            // Define the offers with their URLs and the associated percentages
+            const offers = [
+                { url: "https://example.com", weight: 30 },
+                { url: "https://wikipedia.org", weight: 20 },
+                { url: "https://openai.com", weight: 3 },
+                { url: "https://google.com", weight: 2 },
+                { url: "https://youtube.com", weight: 1 },
+                { url: "https://facebook.com", weight: 4 },
+                { url: "https://twitter.com", weight: 2 },
+                { url: "https://amazon.com", weight: 3 },
+                { url: "https://reddit.com", weight: 1 },
+                { url: "https://linkedin.com", weight: 2 },
+                { url: "https://instagram.com", weight: 2 },
+                { url: "https://netflix.com", weight: 6 },
+                { url: "https://microsoft.com", weight: 2 },
+                { url: "https://apple.com", weight: 2 },
+                { url: "https://github.com", weight: 4 },
+                { url: "https://stackoverflow.com", weight: 2 },
+                { url: "https://bbc.com", weight: 3 },
+                { url: "https://cnn.com", weight: 3 },
+                { url: "https://nytimes.com", weight: 5 },
+                { url: "https://theguardian.com", weight: 3 }
+            ];
+
+            // Calculate total weight
+            const totalWeight = offers.reduce((accum, offer) => accum + offer.weight, 0);
+
+            // Generate a random number between 0 and the total weight
+            const randomNum = Math.random() * totalWeight;
+
+            let cumulativeWeight = 0;
+
+            // Iterate through offers and select the one based on weight distribution
+            for (let i = 0; i < offers.length; i++) {
+                cumulativeWeight += offers[i].weight;
+                if (randomNum < cumulativeWeight) {
+                    window.location.href = offers[i].url;
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
